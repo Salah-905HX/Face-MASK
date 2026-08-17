@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FaceMask AI</title>
+    <link
+        rel="icon"
+        type="image/png"
+        href="/assets/4.jpeg"
+    >
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav class="navbar">
+
+        <a href="#" class="brand">
+
+    <img
+        src="/assets/V2.jpeg"
+        alt="FaceMask AI"
+        class="logo-image"
+    >
+
+    <span>
+        FaceMask <strong>AI</strong>
+    </span>
+
+    </a>
+
+        <div class="nav-links">
+            <a href="#how">How it works</a>
+            <a href="#about">About</a>
+            <a href="mailto:salahkarimmmm@gmail.com">Contact</a>
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+        <div class="badge">
+            ✨ AI-Powered Face Masking
+        </div>
+
+        <h1>
+            Mask faces with
+            <span>AI</span>
+        </h1>
+
+        <p class="hero-text">
+            Protect faces in your videos directly in your browser.
+            Your video stays on your device and processing uses
+            your own hardware.
+        </p>
+
+<!-- =========================
+     EXAMPLES
+========================= -->
+
+<section class="examples" id="examples">
+
+
+    <div class="example-grid">
+
+        <!-- TikTok -->
+
+        <div class="example-card">
+
+            <div class="example-video vertical">
+
+                <video
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    preload="metadata">
+                    <source
+                        src="/assets/video 1.webm"
+                         
+                        type="video/webm">
+                        
+                </video>
+
+            </div>
+
+            
+        </div>
+
+
+        <!-- YouTube -->
+
+        <div class="example-card">
+
+            <div class="example-video">
+
+                <video
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    preload="metadata">
+
+                    <source
+                        src="/assets/video 2.webm"
+                        type="video/webm">
+
+                </video>
+
+            </div>
+
+        </div>
+
+
+        <!-- Instagram -->
+
+        <div class="example-card">
+
+            <div class="example-video vertical">
+
+                <video
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    preload="metadata">
+
+                    <source
+                        src="/assets/video 3.webm"
+                        type="video/webm">
+
+                </video>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+        <!-- =========================
+             UPLOAD
+        ========================= -->
+
+        <div class="upload-container" id="uploadContainer">
+
+            <div class="upload-icon">
+                🎬
+            </div>
+
+            <h2>
+                Upload your video
+            </h2>
+
+            <p>
+                Select a video to start masking faces
+            </p>
+
+            <input
+                type="file"
+                id="videoInput"
+                accept="video/*"
+                hidden
+            >
+
+            <button
+                type="button"
+                class="choose-btn"
+                id="chooseBtn">
+                Choose Video
+            </button>
+            <p class="formats">
+                MP4, WebM, MOV and other browser-supported formats
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             VIDEO
+        ========================= -->
+
+        <div
+            class="video-section hidden"
+            id="videoSection">
+
+            <div class="section-title">
+
+                <span>
+                    Preview
+                </span>
+
+                <button
+                    class="change-btn"
+                    id="changeBtn">
+                    Change video
+                </button>
+
+            </div>
+
+
+            <div class="video-container">
+
+                <video
+                    id="video"
+                    controls
+                    muted
+                    playsinline>
+                </video>
+
+                <canvas id="canvas"></canvas>
+
+            </div>
+
+
+            <div class="file-info">
+
+                <span id="fileName">
+                    Video
+                </span>
+
+                <span id="videoResolution">
+                    --
+                </span>
+
+            </div>
+
+
+            <p id="status">
+                Loading...
+            </p>
+
+
+            <button
+                class="process-btn"
+                id="processBtn">
+
+                Process Video
+
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             PROCESSING (MODAL)
+        ========================= -->
+
+        <div
+            class="processing-overlay hidden"
+            id="processing">
+
+            <div class="processing-modal">
+
+                <div class="processing-icon">
+                    ⚙
+                </div>
+
+                <h2>
+                    Processing your request…
+                </h2>
+
+                <p>
+                    FaceMask AI is detecting and masking faces
+                    directly on your device.
+                </p>
+
+                <div class="progress-container">
+
+                    <div
+                        class="progress-bar"
+                        id="progressBar">
+                    </div>
+
+                </div>
+
+                <div class="progress-info">
+
+                    <span>
+                        Processing...
+                    </span>
+
+                    <span id="progressText">
+                        0%
+                    </span>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    id="cancelBtn">
+                    Cancel &amp; delete video
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             RESULT
+        ========================= -->
+
+        <div
+            class="result hidden"
+            id="result">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h2>
+                Video ready
+            </h2>
+
+            <p>
+                Your video has been processed successfully.
+            </p>
+
+            <a
+                href="#"
+                class="download-btn"
+                id="downloadBtn">
+
+                Download Video
+
+            </a>
+
+            <button
+                class="again-btn"
+                id="againBtn">
+
+                Process another video
+
+            </button>
+
+        </div>
+
+    </section>
+
+<!-- =========================
+     EXAMPLES
+========================= -->
+
+
+    <!-- =========================
+         HOW IT WORKS
+    ========================= -->
+
+    <section
+        class="how"
+        id="how">
+
+        <h2>
+            How it works
+        </h2>
+
+        <p class="section-description">
+            FaceMask AI processes everything locally in your browser.
+        </p>
+
+
+        <div class="steps">
+
+            <div class="step">
+
+                <div class="step-number">
+                    01
+                </div>
+
+                <h3>
+                    Upload
+                </h3>
+
+                <p>
+                    Choose the video you want to process.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    02
+                </div>
+
+                <h3>
+                    Detect
+                </h3>
+
+                <p>
+                    MediaPipe AI detects faces and tracks
+                    their landmarks frame by frame.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    03
+                </div>
+
+                <h3>
+                    Mask
+                </h3>
+
+                <p>
+                    The detected face area is masked directly
+                    on your device.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT
+    ========================= -->
+
+    <section
+        class="about"
+        id="about">
+
+        <h2>
+            Your video stays private
+        </h2>
+
+        <p>
+            FaceMask AI is designed to process your video
+            locally in your browser. Your video does not need
+            to be uploaded to a server for face detection.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        FaceMask AI © 2026
+
+    </footer>
+
+    <!-- =========================
+     ERROR POPUP
+========================= -->
+
+<div class="error-modal hidden" id="errorModal">
+
+    <div class="error-box">
+
+        <div class="error-icon">
+            !
+        </div>
+
+        <h2>Processing failed</h2>
+
+        <p id="errorMessage">
+            Something went wrong while processing your video.
+        </p>
+
+        <button
+            type="button"
+            id="errorCloseBtn">
+            OK
+        </button>
+
+    </div>
+
+</div>
+
+    <script
+        type="module"
+        src="/App.js">
+    </script>
+
+</body>
+
+</html>
